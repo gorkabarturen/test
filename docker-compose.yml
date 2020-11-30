@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  ainguraiiot-oberonx:
+    build:
+      context: ./build
+      dockerfile: /home/gorka/cosasfeas/xabi-docker/Dockerfile
+      args:
+        - host_uid=1000
+        - host_gid=1000
+        - USER_NAME=gorka
+    extra_hosts:
+      - 'ELETSRVGIT.etxe-tar.local:192.168.230.21'
+    image: 'ainguraiiot-oberonx-image:latest'
+    volumes:
+      - '/opt/Xilinx:/opt/Xilinx:ro'
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/etc/timezone:/etc/timezone:ro'
+      - '/opt/yocto/zynqmp/download:/opt/yocto/zynqmp/download'
+      - '/opt/yocto/zynqmp/sstate-cache:/opt/yocto/zynqmp/sstate-cache'
+      - '/var/artifacts:/var/artifacts'
+      - '/tmp/tmux-1000:/tmp/tmux-1000'
+      - '/home/gorka/.ssh:/home/gorka/.ssh'
